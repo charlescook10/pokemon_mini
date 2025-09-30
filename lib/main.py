@@ -7,6 +7,24 @@ from helper_funcs import invalid_input
 from time import sleep
 import random
 
+def starter_selection(pc):
+    print("Choose a starter pokemon.\n(1)Bulbasaur (2)Charmander (3)Squirtle\n")
+    valid_input = False
+    while valid_input == False:
+        user_input = input()
+        match user_input:
+            case "1":
+                valid_input = True
+                pc.starter_pokemon(pokemon.starter_pokemon[0]())
+            case "2":
+                valid_input = True
+                pc.starter_pokemon(pokemon.starter_pokemon[1]())
+            case "3":
+                valid_input = True
+                pc.starter_pokemon(pokemon.starter_pokemon[2]())
+            case _:
+                invalid_input()
+                continue
 
 def player_options(pc):
     print("\n---HOME---\n")
@@ -63,6 +81,11 @@ def start_game():
     sleep(1)
 
     print("Pokeballs added\n")
+
+    sleep(1)
+    
+    starter_selection(pc)
+
     while playing:
         sleep(1)
         playing = player_options(pc)
