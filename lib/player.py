@@ -44,6 +44,13 @@ class Player():
                 self.set_as_follower(pokemon)
             return True
         return False
+    def starter_pokemon(self, pokemon):
+        print(f"\nWould you like to give {pokemon.species} a name?(Y/N)")
+        self.__give_pokemon_name(pokemon)
+        self.pokemon.append(pokemon)
+        print(f"\n{pokemon.name} added to your collection.\n")
+        if self.follower_pokemon == None:
+            self.set_as_follower(pokemon)
     def view_pokemon(self):
         print(f"\n---{self.name} Pokemon---\n")
         for pokemon in self.pokemon:
