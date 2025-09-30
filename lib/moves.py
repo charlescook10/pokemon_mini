@@ -9,6 +9,20 @@ class Move():
     def __str__(self):
         return f"{self.name} a {self.type} type move with {self.pwr} power."
 
-scratch = Move("Scratch", pokemon_types.normal, 40)
-quick_attack = Move("Quick Attack", pokemon_types.normal, 40)
+# Normal
+scratch = Move("Scratch", pokemon_types.normal, 30)
+quick_attack = Move("Quick Attack", pokemon_types.normal, 30)
+tackle = Move("Tackle", pokemon_types.normal, 30)
+
+# Electric
 thunder_shock = Move("Thunder Shock", pokemon_types.electric, 40)
+
+# Water
+water_gun = Move("Water Gun", pokemon_types.water, 40)
+
+# Fire
+ember = Move("Ember", pokemon_types.fire, 40)
+
+# Grass
+vine_whip = Move("Vine Whip", pokemon_types.grass, 45)
+
