@@ -1,12 +1,14 @@
 from abc import ABC, abstractmethod
 import pokemon_types
 import moves
+import random
 
 class Pokemon(ABC):
-    def __init__(self, species, types, name=False):
+    def __init__(self, species, types, move, name=False):
         self._species = species
         self._type = types
         self.name = name if name else species
+        self._learnt_move = move
     def __str__(self):
         return_string = ""
         if self.name == self._species:
@@ -24,26 +26,26 @@ class Pokemon(ABC):
         # makes the pokemon species sound
         pass
     @abstractmethod
-    def attack(self):
+    def attack(self, pokemon):
         pass
 
 class Pikachu(Pokemon):
     def __init__(self, name=False):
-        super().__init__("Pikachu", [pokemon_types.electric], name)
+        super().__init__("Pikachu", [pokemon_types.electric], random.choice[moves.quick_attack, moves.thunder_shock], name)
     def cry(self):
         pass
-    def attack(self):
-        print(f"{self.name} uses Thunderbolt!")
+    def attack(self, pokemon):
+        print(f"{self.name} uses {self._learnt_move} on {pokemon.name}!")
     def give_name(self, name):
         self.name = name
 
 class Charmander(Pokemon):
     def __init__(self, name=False):
-        super().__init__("Charmander", [pokemon_types.fire], name)
+        super().__init__("Charmander", [pokemon_types.fire], moves.scratch, name)
     def cry(self):
         pass
-    def attack(self):
-        print(f"{self.name} uses Ember!")
+    def attack(self, pokemon):
+        print(f"{self.name} uses {self._learnt_move} on {pokemon.name}!")
     def give_name(self, name):
         self.name = name
 
