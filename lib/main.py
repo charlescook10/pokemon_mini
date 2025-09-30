@@ -1,8 +1,12 @@
 from player import Player
 import pokemon
+import battles
+from helper_funcs import invalid_input
+
+
 from time import sleep
 import random
-from helper_funcs import invalid_input
+
 
 def player_options(pc):
     print("\n---HOME---\n")
@@ -25,26 +29,13 @@ def player_options(pc):
                 invalid_input()
                 continue            
 
-def encounter_options(pc, wild_pokemon):
-    valid_input = False
-    while valid_input == False:
-        print("Do you want to attempt to catch it? (Y/N)")
-        user_input = input().lower()
-        match user_input:
-            case "y":
-                valid_input = True
-                pc.use_pokeball(wild_pokemon)
-            case "n":
-                valid_input = True
-                print(f"\n{pc.name} successfully ran away!")
-            case _:
-                invalid_input()
-                continue
+def encounter(pc, wild_pokemon):
+    battles.battle(pc, wild_pokemon)
 
 def random_encounter():
     encounter = random.choice(pokemon.pokemon_list)
     wild_pokemon = encounter()
-    print(f"A wild {wild_pokemon.name} has appeared!\n")
+    print(f"A {wild_pokemon.name} has appeared!\n")
     return wild_pokemon
 
 def explore(pc):
@@ -53,7 +44,7 @@ def explore(pc):
         print("\n*rustle*\n")
     wild_pokemon = random_encounter()
 
-    encounter_options(pc, wild_pokemon)
+    encounter(pc, wild_pokemon)
     
     return True    
 
