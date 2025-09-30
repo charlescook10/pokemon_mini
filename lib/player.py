@@ -4,8 +4,23 @@ class Player():
     def __init__(self, name):
         self.name = name
         self.pokemon = []
+    def __give_pokemon_name(self, pokemon):
+        valid_input = False
+        while valid_input == False:
+            user_input = input().lower()
+            match user_input:
+                case "y":
+                    valid_input = True
+                    print("Enter a name:")
+                    pokemon.name = input()
+                case "n":
+                    valid_input = True
+                case _:
+                    print("\nI'm sorry, I didn't understand that.\n")
+                    continue 
     def use_pokeball(self, pokemon):
         counter = 0
+        print(f"\n{self.name} threw a pokeball!\n")
         for x in range(3):
             sleep(1)
             if random.random() > 0.15:
@@ -13,8 +28,16 @@ class Player():
                 print("Ding!\n")
             else:
                 print(f"{pokemon.name} escaped!\n")
+                break
         if counter == 3:
-            print(f"Congratulations! You caught a {pokemon.name}.\n\n")
+            print(f"Congratulations! You caught a {pokemon.name}.\n")
+            print(f"\nWould you like to give {pokemon.name} a name?(Y/N)")
+            self.__give_pokemon_name(pokemon)
             self.pokemon.append(pokemon)
+            print(f"\n{pokemon.name} added to your collection.\n")
             return True
         return False
+    def view_pokemon(self):
+        print(f"\n---{self.name} Pokemon---\n")
+        for pokemon in self.pokemon:
+            print(f"\n{pokemon}")
