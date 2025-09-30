@@ -2,9 +2,7 @@ from player import Player
 import pokemon
 from time import sleep
 import random
-
-def invalid_input():
-    print("\nI'm sorry, I didn't understand that.\n")
+from helper_funcs import invalid_input
 
 def player_options(pc):
     print("\n---HOME---\n")

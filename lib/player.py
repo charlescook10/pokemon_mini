@@ -1,5 +1,7 @@
 import random
 from time import sleep
+from helper_funcs import invalid_input
+
 class Player():
     def __init__(self, name):
         self.name = name
@@ -16,7 +18,7 @@ class Player():
                 case "n":
                     valid_input = True
                 case _:
-                    print("\nI'm sorry, I didn't understand that.\n")
+                    invalid_input()
                     continue 
     def use_pokeball(self, pokemon):
         counter = 0
