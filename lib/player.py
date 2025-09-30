@@ -5,6 +5,7 @@ from helper_funcs import invalid_input
 class Player():
     def __init__(self, name):
         self.name = name
+        self.follower_pokemon = None
         self.pokemon = []
     def __give_pokemon_name(self, pokemon):
         valid_input = False
@@ -20,7 +21,7 @@ class Player():
                 case _:
                     invalid_input()
                     continue 
-    def use_pokeball(self, pokemon):
+    def throw_pokeball(self, pokemon):
         counter = 0
         print(f"\n{self.name} threw a pokeball!\n")
         for x in range(3):
@@ -43,3 +44,6 @@ class Player():
         print(f"\n---{self.name} Pokemon---\n")
         for pokemon in self.pokemon:
             print(f"\n{pokemon}")
+    def set_as_follower(self, pokemon):
+        self.follower_pokemon = pokemon
+        print(f"{self.follower_pokemon.name} is now following you.")
