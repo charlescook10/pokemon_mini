@@ -5,11 +5,9 @@ class Move():
     def __init__(self, name, type, power):
         self.name = name
         self.type = type
-        self.power = power
-    def use_move(self, pokemon):
-        pokemon.take_dmg(self)
+        self.pwr = power
     def __str__(self):
-        return f"{self.name} a {self.type} type move with {self.power} power."
+        return f"{self.name} a {self.type} type move with {self.pwr} power."
 
 scratch = Move("Scratch", pokemon_types.normal, 40)
 quick_attack = Move("Quick Attack", pokemon_types.normal, 40)
