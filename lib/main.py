@@ -10,6 +10,8 @@ import random
 
 def player_options(pc):
     print("\n---HOME---\n")
+    if pc.follower_pokemon != None:
+        pc.follower_pokemon.heal()
     print("\nPress \'E\' to explore the tall grass.\nPress \'L\' to view your pokemon.\nTo quit press \'Q\'.\n")
     valid_input = False
     while valid_input == False:
