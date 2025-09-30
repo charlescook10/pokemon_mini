@@ -30,7 +30,8 @@ def fainted_check(pokemon):
 def fight(first_pokemon, second_pokemon):
     print(f"\n{first_pokemon.name} went first!\n")
     if second_pokemon.take_dmg(calculate_dmg_done(first_pokemon, second_pokemon)) != True:
-        first_pokemon.take_dmg(calculate_dmg_done(second_pokemon, first_pokemon))
+        if first_pokemon.take_dmg(calculate_dmg_done(second_pokemon, first_pokemon)) == True:
+            return True
     else:
         return True
 
