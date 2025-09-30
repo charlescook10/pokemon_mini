@@ -5,13 +5,13 @@ class Pokemon(ABC):
     def __init__(self, species, types, name=False):
         self._species = species
         self._type = types
-        self._name = name if name else species
+        self.name = name if name else species
     def __str__(self):
         return_string = ""
-        if self._name == self._species:
-            return_string = f"{self._name} an {self._type[0]}"
+        if self.name == self._species:
+            return_string = f"{self.name} a {self._type[0]}"
         else:
-            return_string = f"{self._name} a {self._species} an {self._type[0]}"
+            return_string = f"{self.name} a {self._species} an {self._type[0]}"
         for type in self._type[1:]:
             return_string += f", {type}"
         return_string += " type pokemon\n\n"
@@ -24,8 +24,6 @@ class Pokemon(ABC):
     @abstractmethod
     def attack(self):
         pass
-    def set_name(self, name):
-        self._name = name
 
 class Pikachu(Pokemon):
     def __init__(self, name=False):
@@ -33,6 +31,19 @@ class Pikachu(Pokemon):
     def cry(self):
         pass
     def attack(self):
-        print(f"{self._name} uses Thunderbolt!")
+        print(f"{self.name} uses Thunderbolt!")
     def give_name(self, name):
-        self.set_name(name)
+        self.name = name
+
+class Charmander(Pokemon):
+    def __init__(self, name=False):
+        super().__init__("Charmander", [pokemon_types.fire], name)
+    def cry(self):
+        pass
+    def attack(self):
+        print(f"{self.name} uses Ember!")
+    def give_name(self, name):
+        self.name = name
+
+
+pokemon_list = [Charmander, Pikachu]
