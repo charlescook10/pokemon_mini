@@ -18,6 +18,7 @@ class Player():
                     pokemon.name = input()
                 case "n":
                     valid_input = True
+                    pokemon.name = pokemon.species
                 case _:
                     invalid_input()
                     continue 
@@ -33,11 +34,14 @@ class Player():
                 print(f"{pokemon.name} escaped!\n")
                 break
         if counter == 3:
-            print(f"Congratulations! You caught a {pokemon.name}.\n")
-            print(f"\nWould you like to give {pokemon.name} a name?(Y/N)")
+            print(f"Congratulations! You caught a {pokemon.species}.\n")
+            pokemon.is_wild = False
+            print(f"\nWould you like to give {pokemon.species} a name?(Y/N)")
             self.__give_pokemon_name(pokemon)
             self.pokemon.append(pokemon)
             print(f"\n{pokemon.name} added to your collection.\n")
+            if self.follower_pokemon == None:
+                self.set_as_follower(pokemon)
             return True
         return False
     def view_pokemon(self):
@@ -46,4 +50,4 @@ class Player():
             print(f"\n{pokemon}")
     def set_as_follower(self, pokemon):
         self.follower_pokemon = pokemon
-        print(f"{self.follower_pokemon.name} is now following you.")
+        print(f"\n{self.follower_pokemon.name} is now following you.")
