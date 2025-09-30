@@ -3,17 +3,17 @@
 
 class Type():
     def __init__(self, type, strong, weak):
-        self.__type = type
-        self.__strong_against = strong
-        self.__weak_against = weak
+        self.type = type
+        self.strong_against = strong
+        self.weak_against = weak
     def __str__(self):
-        return f"{self.__type}"
+        return f"{self.type}"
     def effectiveness(self):
         return_string = f"{self.__type} Type\n\nStrong against:"
-        for type in self.__strong_against:
+        for type in self.strong_against:
             return_string += "\n "+type
         return_string += "\n\nWeak against:"
-        for type in self.__weak_against:
+        for type in self.weak_against:
             return_string += "\n "+type
         return return_string
 
