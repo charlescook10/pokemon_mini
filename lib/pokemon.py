@@ -61,17 +61,31 @@ class Pokemon(ABC):
 
 class Pikachu(Pokemon):
     def __init__(self, name=False):
-        super().__init__("Pikachu", [pokemon_types.electric], random.choice([moves.quick_attack, moves.thunder_shock]), name)
+        super().__init__("Pikachu", [pokemon_types.electric], random.choice([moves.quick_attack, moves.thunder_shock]), name, speed=1.2)
     # If cry did something then it would be an example of polymorphism
     def cry(self):
         pass
 
 class Charmander(Pokemon):
     def __init__(self, name=False):
-        super().__init__("Charmander", [pokemon_types.fire], moves.scratch, name)
+        super().__init__("Charmander", [pokemon_types.fire], random.choice([moves.scratch, moves.ember]), name, speed=1.1)
+    def cry(self):
+        pass
+
+class Squirtle(Pokemon):
+    def __init__(self, name=False):
+        super().__init__("Squirtle", [pokemon_types.water], random.choice([moves.tackle, moves.water_gun]), name, hp=5)
+    def cry(self):
+        pass
+
+class Bulbasaur(Pokemon):
+    def __init__(self, name=False):
+        super().__init__("Bulbasaur", [pokemon_types.grass], random.choice([moves.tackle, moves.vine_whip]), name, atk_pwr=1.5, speed=0.9)
     def cry(self):
         pass
     
 
 
-pokemon_list = [Charmander, Pikachu]
+pokemon_list = [Pikachu, Charmander, Bulbasaur, Squirtle]
+
+starter_pokemon = [Bulbasaur, Charmander, Squirtle]
