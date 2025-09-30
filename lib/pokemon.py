@@ -9,6 +9,11 @@ class Pokemon(ABC):
         self._type = types
         self.name = name if name else species
         self._learnt_move = move
+
+        self.hp = 40
+        self.atk_pwr = 1
+        self.speed = 1
+
     def __str__(self):
         return_string = ""
         if self.name == self._species:
