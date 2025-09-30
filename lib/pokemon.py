@@ -74,7 +74,7 @@ class Charmander(Pokemon):
 
 class Squirtle(Pokemon):
     def __init__(self, name=False):
-        super().__init__("Squirtle", [pokemon_types.water], random.choice([moves.tackle, moves.water_gun]), name, hp=5)
+        super().__init__("Squirtle", [pokemon_types.water], random.choice([moves.tackle, moves.water_gun]), name, hp=45)
     def cry(self):
         pass
 
