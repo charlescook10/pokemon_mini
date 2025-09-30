@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 import pokemon_types
+import moves
 
 class Pokemon(ABC):
     def __init__(self, species, types, name=False):
@@ -16,7 +17,8 @@ class Pokemon(ABC):
             return_string += f", {type}"
         return_string += " type pokemon\n\n"
         return return_string
-
+    def take_dmg(self, move):
+        pass
     @abstractmethod
     def cry(self):
         # makes the pokemon species sound
