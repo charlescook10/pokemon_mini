@@ -57,6 +57,11 @@ class Pokemon(ABC):
         # makes the pokemon species sound
         pass
 
+class EvolutionLine():
+    def __init__(self):
+        self.evolution_line = []
+        self.next = None
+
 # Pokemon is a parent class that the other classes inherit from.
 
 class Pikachu(Pokemon):
