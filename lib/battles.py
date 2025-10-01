@@ -6,13 +6,7 @@ import random
 def calculate_effectiveness(move, pokemon_type):
     effectiveness = 1.0
     for type in pokemon_type:
-        #print(move.type.type in type.weak_against)
-        if move.type.type in type.weak_against:
-            effectiveness = effectiveness*2
-        
-        #print(move.type.type in type.weak_against)
-        if move.type.type in type.strong_against:
-            effectiveness = effectiveness/2
+        effectiveness = move.effectiveness(type, effectiveness)
     #print(f"Effectiveness of {move.name}: {effectiveness}")
     return effectiveness
 

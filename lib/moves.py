@@ -8,7 +8,13 @@ class Move():
         self.pwr = power
     def __str__(self):
         return f"{self.name} a {self.type} type move with {self.pwr} power."
-
+    def effectiveness(self, type, effectiveness):
+        if self.type.type in type.weak_against:
+            effectiveness = effectiveness*2
+        
+        if self.type.type in type.strong_against:
+            effectiveness = effectiveness/2
+        return effectiveness
 # Normal
 scratch = Move("Scratch", pokemon_types.normal, 30)
 quick_attack = Move("Quick Attack", pokemon_types.normal, 30)
