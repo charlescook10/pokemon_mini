@@ -1,4 +1,4 @@
-from helper_funcs import invalid_input
+from lib.helper_funcs import invalid_input
 
 from time import sleep
 import random
@@ -12,17 +12,18 @@ def calculate_effectiveness(move, pokemon_type):
 
 
 def calculate_dmg_done(pokemon, target_pokemon):
-    effectiveness = calculate_effectiveness(pokemon.move(), target_pokemon.type)
-    dmg = int((((pokemon.move().pwr)*pokemon.atk_pwr + 4)/5) * effectiveness)
+    effectiveness = calculate_effectiveness(pokemon.move, target_pokemon.type)
+    dmg = int(((pokemon.move_pwr() + 4)/5) * effectiveness)
     sleep(1.5)
     pokemon.attack(target_pokemon, dmg)
     return dmg
 
 def fainted_check(pokemon):
-    if pokemon.is_fainted:
+    fainted = pokemon.is_fainted()
+    if fainted:
         sleep(1)
         print(f"{pokemon.name} has fainted!")
-    return pokemon.is_fainted
+    return fainted
 
 def fight(first_pokemon, second_pokemon):
     print(f"\n{first_pokemon.name} went first!\n")
@@ -44,7 +45,7 @@ def battle_options(pc, wild_pokemon):
         user_input = input().lower()
         match user_input:
             case "a":
-                if battle_order(pc.follower_pokemon, wild_pokemon):
+                if battle_order(pc.follower, wild_pokemon):
                     return
             case "p":
                 if pc.throw_pokeball(wild_pokemon):
